@@ -39,18 +39,18 @@ app.get("/contacts", function(req, res) {
     Contact.find({}, function(err, contacts){
         if(err) return res.json(err);
 	res.render("contacts/index", {contacts:contacts});
-	});
+	})
     });
 // Contacts - New
-app.post("/contacts/new", function(req, res){
+app.get("/contacts/new", function(req, res){
     res.render("contacts/new");
     });
 // Contacts - Create
 app.post("/contacts", function(req, res){
     Contact.create(req.body, function(err, contact){
-        if(err) return res.join(err);
+        if(err) return res.json(err);
 	res.redirect("/contacts");
-	});
+	})
     });
 
 // Port setting
